@@ -1,5 +1,7 @@
 public class Main {
+    private static final Game GAME = new Game();
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        GAME.showMenu();
     }
 }

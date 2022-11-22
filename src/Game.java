@@ -1,2 +1,11 @@
-package PACKAGE_NAME;public class Game {
+public class Game {
+    public void showMenu() {
+        System.out.println("""
+                Это игра Реверси. Для продолжения выберите дейтсвие
+                1. Игра с компьютером
+                2. Игра вдвоем
+                3. Показать максимум очков
+                4. Выход
+                """);
+    }
 }
