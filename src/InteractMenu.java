@@ -25,13 +25,10 @@ public class InteractMenu {
         boolean isCorrect = false;
         do{
             answer = SCANNER.nextLine();
-            switch (answer) {
-                case "1" -> {
-                    isCorrect = true;
-                }
-                case "2" -> {
-                    isCorrect = true;
-                }
+            if("1".equals(answer) || "2".equals(answer)) {
+                isCorrect = true;
+            } else {
+                InteractMenu.showIncorrectInput();
             }
         } while(!isCorrect);
         return Integer.parseInt(answer);
@@ -43,5 +40,10 @@ public class InteractMenu {
 
     public static void showGoodBye() {
         System.out.println("До связи!");
+    }
+
+    public static void showHowToUseInterface() {
+        System.out.println("Введите координаты хода в формате 'x y', где \n" +
+                "x и y в диапазоне [1; 8]");
     }
 }

@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Меню">
-      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Computer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InteractMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
+    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Добавлены 3 класса, изменен класс Game. &#10;Два &quot;пользователя&quot; - это комп и игрок">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Computer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InteractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InteractMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +59,7 @@
       <updated>1669127207812</updated>
       <workItem from="1669127209398" duration="786000" />
       <workItem from="1669128181715" duration="783000" />
-      <workItem from="1669153367968" duration="1763000" />
+      <workItem from="1669153367968" duration="4302000" />
     </task>
     <task id="LOCAL-00001" summary="Меню">
       <created>1669128463010</created>
@@ -77,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669128947672</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Добавлены 3 класса, изменен класс Game. &#10;Два &quot;пользователя&quot; - это комп и игрок">
+      <created>1669155235372</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669155235372</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,6 +101,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Меню" />
-    <option name="LAST_COMMIT_MESSAGE" value="Меню" />
+    <MESSAGE value="Добавлены 3 класса, изменен класс Game. &#10;Два &quot;пользователя&quot; - это комп и игрок" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены 3 класса, изменен класс Game. &#10;Два &quot;пользователя&quot; - это комп и игрок" />
   </component>
 </project>

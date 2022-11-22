@@ -14,4 +14,8 @@ public class Computer {
         }
         level = value;
     }
+
+    public void makeMove() {
+
+    }
 }

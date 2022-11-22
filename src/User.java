@@ -11,4 +11,8 @@ public class User {
         }
         maxPoints = value;
     }
+
+    public void makeMove() {
+
+    }
 }
