@@ -8,4 +8,12 @@ public class Game {
                 4. Выход
                 """);
     }
+
+    public void showIncorrectInput() {
+        System.out.println("Неверный ввод");
+    }
+
+    public void showGoodBye() {
+        System.out.println("До связи!");
+    }
 }
