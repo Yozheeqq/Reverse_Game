@@ -8,13 +8,17 @@ public class Game {
     private final Computer computer = new Computer();
     private int computerPoints = 2;
     private int userPoints = 2;
+    private int emptyFields = 60;
+    private boolean userCanMove = true;
+    private boolean computerCanMove = true;
+    private String winner;
 
     // X - user
     // Y - computer
-    public char[][] field = new char[FIELD_SIZE][FIELD_SIZE];
+    public static char[][] field = new char[FIELD_SIZE][FIELD_SIZE];
     private final char[][] prevField = new char[FIELD_SIZE][FIELD_SIZE];
 
-    public void showMenu() {
+    public int showMenu() {
         InteractMenu.showMenu();
         String answer;
         boolean isMenu = true;
@@ -32,42 +36,90 @@ public class Game {
                 case "3" -> System.out.println("Максимум очков: " + user.getMaxPoints());
                 case "4" -> {
                     InteractMenu.showGoodBye();
-                    isMenu = false;
+                    return 1;
                 }
                 default -> InteractMenu.showIncorrectInput();
             }
         } while (isMenu);
+        return 0;
     }
 
     private void startGame() {
         initializeStartParams();
+        drawField("Начало");
         while(true) {
-            drawField("Игрок");
-            var coords = user.makeMove();
-
-            changeChipColor('X', coords[0], coords[1]);
+            userMove();
             if(isGameOver()) {
                 break;
             }
-            drawField("Компьютер");
-            // Логика для компа - сделать
-            computer.makeMove();
+            computerMove();
             if(isGameOver()) {
                 break;
             }
-            InteractMenu.cancelMove();
-            String answer = InteractMenu.SCANNER.nextLine();
-            if("/cancel".equals(answer)) {
-                cancelMove();
-            }
+            cancelMoveSuggestion();
             copyPrevField();
         }
-        // Тут пишем, кто выиграл
-        // Выводим кол-во очков
+        drawField("КОНЕЦ");
+        user.setMaxPoints(userPoints);
+        if("user".equals(winner)) {
+            InteractMenu.showWinner("игрок");
+        } else if ("computer".equals(winner)) {
+            InteractMenu.showWinner("компьютер");
+        }
+        InteractMenu.showPoint(userPoints, computerPoints);
     }
 
-    // Сделать проверку конца игры
+    private void userMove() {
+        userCanMove = Movement.canMove("user");
+        if(!userCanMove) {
+            InteractMenu.showUserCantMove();
+            return;
+        }
+        var coordsUser = user.makeMove();
+        changeChipColor('X', coordsUser[0], coordsUser[1]);
+        countChips();
+        drawField("Игрок");
+    }
+
+    private void computerMove() {
+        computerCanMove = Movement.canMove("computer");
+        if(!computerCanMove) {
+            InteractMenu.showComputerCantMove();
+            return;
+        }
+
+        var coordsComputer =  computer.makeMove();
+        changeChipColor('Y', coordsComputer[0], coordsComputer[1]);
+        countChips();
+        drawField("Компьютер");
+    }
+
+    private void cancelMoveSuggestion() {
+        InteractMenu.cancelMove();
+        String answer = InteractMenu.SCANNER.nextLine();
+        if("/cancel".equals(answer)) {
+            cancelMove();
+        }
+
+    }
+
     private boolean isGameOver() {
+        if(userPoints == 0) {
+            winner = "computer";
+            return true;
+        }
+        if(computerPoints == 0) {
+            winner = "user";
+            return true;
+        }
+        if(emptyFields == 0 || (!userCanMove && !computerCanMove)) {
+            if(userPoints == computerPoints) {
+                winner = "draw";
+                return true;
+            }
+            winner = userPoints > computerPoints ? "user" : "computer";
+            return true;
+        }
         return false;
     }
 
@@ -77,15 +129,34 @@ public class Game {
         }
     }
 
+    private void countChips() {
+        userPoints = 0;
+        computerPoints = 0;
+        emptyFields = 0;
+        for(var row : field) {
+            for(var chip : row) {
+                if(chip == 'X') {
+                    userPoints++;
+                } else if(chip == 'Y') {
+                    computerPoints++;
+                } else if(chip == '0') {
+                    emptyFields++;
+                }
+            }
+        }
+    }
+
     private void cancelMove() {
         for(int i = 0; i < FIELD_SIZE; i++) {
             System.arraycopy(prevField[i], 0, field[i], 0, FIELD_SIZE);
         }
+        drawField("Игрок");
     }
 
     private void drawField(String player) {
         System.out.println("---------------");
         System.out.println("Сейчас ход " + player);
+        System.out.println("Компьютер: " + computerPoints + "; Игрок: " + userPoints);
         System.out.println("---------------");
         for(int i = 0; i < FIELD_SIZE; i++) {
             for(int j = 0; j < FIELD_SIZE; j++) {
@@ -105,6 +176,7 @@ public class Game {
     private void initializeStartParams() {
         computerPoints = 2;
         userPoints = 2;
+        emptyFields = 60;
         for(int i = 0; i < FIELD_SIZE; i++) {
             for(int j = 0; j < FIELD_SIZE; j++) {
                 field[i][j] = '0';
@@ -118,14 +190,18 @@ public class Game {
     }
 
     public void changeChipColor(char currentChip, int x, int y) {
-        field[x][y] = 'X';
+        field[x][y] = currentChip;
         changeChipColorHorizontal(currentChip, x, y);
         changeChipColorVertical(currentChip, x, y);
         changeChipColorDiagonal(currentChip, x, y);
     }
 
     private void changeChipColorDiagonal(char currentChip, int x, int y) {
+        // TODO Вверх-влево косяк
         for(int i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {
+            if(field[i][j] == '0') {
+                break;
+            }
             if(field[i][j] == currentChip) {
                 for(int k = i, l = j; k < x && l < y; k++, l++) {
                     field[k][l] = currentChip;
@@ -134,6 +210,9 @@ public class Game {
             }
         }
         for(int i = x + 1, j = y + 1; i < FIELD_SIZE && j < FIELD_SIZE; i++, j++) {
+            if(field[i][j] == '0') {
+                break;
+            }
             if(field[i][j] == currentChip) {
                 for(int k = i, l = j; k >= x && l >= y; k--, l--) {
                     field[k][l] = currentChip;
@@ -142,6 +221,9 @@ public class Game {
             }
         }
         for(int i = x - 1, j = y + 1; i >= 0 && j < FIELD_SIZE; i--, j++) {
+            if(field[i][j] == '0') {
+                break;
+            }
             if(field[i][j] == currentChip) {
                 for(int k = i, l = j; k < x && l >= y; k++, l--) {
                     field[k][l] = currentChip;
@@ -150,6 +232,9 @@ public class Game {
             }
         }
         for(int i = x + 1, j = y - 1; i < FIELD_SIZE && j >= 0; i++, j--) {
+            if(field[i][j] == '0') {
+                break;
+            }
             if(field[i][j] == currentChip) {
                 for(int k = i, l = j; k >= x && l < y; k--, l++) {
                     field[k][l] = currentChip;
@@ -161,6 +246,9 @@ public class Game {
 
     private void changeChipColorHorizontal(char currentChip, int x, int y) {
         for(int i = x - 1; i >= 0; i--) {
+            if(field[i][y] == '0') {
+                break;
+            }
             if(field[i][y] == currentChip) {
                 for(int j = i; j < x; j++) {
                     field[j][y] = currentChip;
@@ -169,6 +257,9 @@ public class Game {
             }
         }
         for(int i = x + 1; i < Game.FIELD_SIZE; i++) {
+            if(field[i][y] == '0') {
+                break;
+            }
             if(field[i][y] == currentChip) {
                 for(int j = x; j <= i; j++) {
                     field[j][y] = currentChip;
@@ -179,7 +270,11 @@ public class Game {
     }
 
     private void changeChipColorVertical(char currentChip, int x, int y) {
+
         for(int i = y - 1; i >= 0; i--) {
+            if(field[x][i] == '0') {
+                break;
+            }
             if(field[x][i] == currentChip) {
                 for(int j = i; j < y; j++) {
                     field[x][j] = currentChip;
@@ -188,6 +283,9 @@ public class Game {
             }
         }
         for(int i = y + 1; i < Game.FIELD_SIZE; i++) {
+            if(field[x][i] == '0') {
+                break;
+            }
             if(field[x][i] == currentChip) {
                 for(int j = y; j <= i; j++) {
                     field[x][j] = currentChip;

@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Возможность сделать ход пользователю">
+    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Убраны варнинги">
+      <change afterPath="$PROJECT_DIR$/src/Movement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Computer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InteractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InteractMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +61,8 @@
       <workItem from="1669127209398" duration="786000" />
       <workItem from="1669128181715" duration="783000" />
       <workItem from="1669153367968" duration="4416000" />
-      <workItem from="1669202695089" duration="6651000" />
+      <workItem from="1669202695089" duration="7151000" />
+      <workItem from="1669225193624" duration="16608000" />
     </task>
     <task id="LOCAL-00001" summary="Меню">
       <created>1669128463010</created>
@@ -93,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669209223558</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Убраны варнинги">
+      <created>1669209513893</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669209513893</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,14 +128,7 @@
     <MESSAGE value="Добавлены 3 класса, изменен класс Game. &#10;Два &quot;пользователя&quot; - это комп и игрок" />
     <MESSAGE value="Интерактив с пользователем. Добавлено поле для игры. Есть поясняющие дальнейшие действия" />
     <MESSAGE value="Возможность сделать ход пользователю" />
-    <option name="LAST_COMMIT_MESSAGE" value="Возможность сделать ход пользователю" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="field" />
-        <watch expression="prevField" />
-      </configuration>
-    </watches-manager>
+    <MESSAGE value="Убраны варнинги" />
+    <option name="LAST_COMMIT_MESSAGE" value="Убраны варнинги" />
   </component>
 </project>

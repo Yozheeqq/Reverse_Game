@@ -7,7 +7,7 @@ public class InteractMenu {
 
     public static void showMenu() {
         System.out.println("""
-                Это игра Реверси. Для продолжения выберите дейтсвие
+                Это игра Реверси. Для продолжения выберите действие
                 1. Игра с компьютером
                 2. Игра вдвоем
                 3. Показать максимум очков
@@ -38,6 +38,14 @@ public class InteractMenu {
         System.out.println("Неверный ввод");
     }
 
+    public static void showIncorrectFormat() {
+        System.out.println("Неверный формат входных данных");
+    }
+
+    public static void showIncorrectPosition() {
+        System.out.println("Неверная позиция для фишки");
+    }
+
     public static void showGoodBye() {
         System.out.println("До связи!");
     }
@@ -49,5 +57,22 @@ public class InteractMenu {
 
     public static void cancelMove() {
         System.out.println("Отменить ход - /cancel");
+    }
+
+    public static void showWinner(String winner) {
+        System.out.println("Победил " + winner);
+    }
+
+    public static void showPoint(int userPoints, int computerPoints) {
+        System.out.println("Игрок: " + userPoints);
+        System.out.println("Компьютер: " + computerPoints);
+    }
+
+    public static void showUserCantMove() {
+        System.out.println("У игрока нет возможности сходить");
+    }
+
+    public static void showComputerCantMove() {
+        System.out.println("У компьютера нет возможности сходить");
     }
 }
