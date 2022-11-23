@@ -12,7 +12,12 @@ public class User {
         maxPoints = value;
     }
 
-    public void makeMove() {
-
+    public Integer[] makeMove() {
+        String[] coords = InteractMenu.SCANNER.nextLine().split(" ");
+        // Проверка ввода
+        int x = Integer.parseInt(coords[0]) - 1;
+        int y = Integer.parseInt(coords[1]) - 1;
+        Game.field[x][y] = 'X';
+        return new Integer[] {x, y};
     }
 }

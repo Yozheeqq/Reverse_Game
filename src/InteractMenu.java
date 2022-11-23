@@ -46,4 +46,8 @@ public class InteractMenu {
         System.out.println("Введите координаты хода в формате 'x y', где \n" +
                 "x и y в диапазоне [1; 8]");
     }
+
+    public static void cancelMove() {
+        System.out.println("Отменить ход - /cancel");
+    }
 }
