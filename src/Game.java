@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class Game {
     public final static int FIELD_SIZE = 8;
@@ -12,8 +11,8 @@ public class Game {
 
     // X - user
     // Y - computer
-    public static char[][] field = new char[FIELD_SIZE][FIELD_SIZE];
-    private char[][] prevField = new char[FIELD_SIZE][FIELD_SIZE];
+    public char[][] field = new char[FIELD_SIZE][FIELD_SIZE];
+    private final char[][] prevField = new char[FIELD_SIZE][FIELD_SIZE];
 
     public void showMenu() {
         InteractMenu.showMenu();
@@ -45,6 +44,7 @@ public class Game {
         while(true) {
             drawField("Игрок");
             var coords = user.makeMove();
+
             changeChipColor('X', coords[0], coords[1]);
             if(isGameOver()) {
                 break;
@@ -73,17 +73,13 @@ public class Game {
 
     private void copyPrevField() {
         for(int i = 0; i < FIELD_SIZE; i++) {
-            for(int j = 0; j < FIELD_SIZE; j++) {
-                prevField[i][j] = field[i][j];
-            }
+            System.arraycopy(field[i], 0, prevField[i], 0, FIELD_SIZE);
         }
     }
 
     private void cancelMove() {
         for(int i = 0; i < FIELD_SIZE; i++) {
-            for(int j = 0; j < FIELD_SIZE; j++) {
-                field[i][j] = prevField[i][j];
-            }
+            System.arraycopy(prevField[i], 0, field[i], 0, FIELD_SIZE);
         }
     }
 
@@ -122,6 +118,7 @@ public class Game {
     }
 
     public void changeChipColor(char currentChip, int x, int y) {
+        field[x][y] = 'X';
         changeChipColorHorizontal(currentChip, x, y);
         changeChipColorVertical(currentChip, x, y);
         changeChipColorDiagonal(currentChip, x, y);
@@ -164,17 +161,17 @@ public class Game {
 
     private void changeChipColorHorizontal(char currentChip, int x, int y) {
         for(int i = x - 1; i >= 0; i--) {
-            if(Game.field[i][y] == currentChip) {
+            if(field[i][y] == currentChip) {
                 for(int j = i; j < x; j++) {
-                    Game.field[j][y] = currentChip;
+                    field[j][y] = currentChip;
                 }
                 break;
             }
         }
         for(int i = x + 1; i < Game.FIELD_SIZE; i++) {
-            if(Game.field[i][y] == currentChip) {
+            if(field[i][y] == currentChip) {
                 for(int j = x; j <= i; j++) {
-                    Game.field[j][y] = currentChip;
+                    field[j][y] = currentChip;
                 }
                 break;
             }
@@ -183,17 +180,17 @@ public class Game {
 
     private void changeChipColorVertical(char currentChip, int x, int y) {
         for(int i = y - 1; i >= 0; i--) {
-            if(Game.field[x][i] == currentChip) {
+            if(field[x][i] == currentChip) {
                 for(int j = i; j < y; j++) {
-                    Game.field[x][j] = currentChip;
+                    field[x][j] = currentChip;
                 }
                 break;
             }
         }
         for(int i = y + 1; i < Game.FIELD_SIZE; i++) {
-            if(Game.field[x][i] == currentChip) {
+            if(field[x][i] == currentChip) {
                 for(int j = y; j <= i; j++) {
-                    Game.field[x][j] = currentChip;
+                    field[x][j] = currentChip;
                 }
                 break;
             }

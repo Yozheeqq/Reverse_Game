@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Интерактив с пользователем. Добавлено поле для игры. Есть поясняющие дальнейшие действия">
+    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Возможность сделать ход пользователю">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InteractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InteractMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +56,7 @@
       <workItem from="1669127209398" duration="786000" />
       <workItem from="1669128181715" duration="783000" />
       <workItem from="1669153367968" duration="4416000" />
-      <workItem from="1669202695089" duration="6227000" />
+      <workItem from="1669202695089" duration="6651000" />
     </task>
     <task id="LOCAL-00001" summary="Меню">
       <created>1669128463010</created>
@@ -89,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669158242208</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Возможность сделать ход пользователю">
+      <created>1669209223558</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669209223558</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,28 +114,10 @@
     <MESSAGE value="Меню" />
     <MESSAGE value="Добавлены 3 класса, изменен класс Game. &#10;Два &quot;пользователя&quot; - это комп и игрок" />
     <MESSAGE value="Интерактив с пользователем. Добавлено поле для игры. Есть поясняющие дальнейшие действия" />
-    <option name="LAST_COMMIT_MESSAGE" value="Интерактив с пользователем. Добавлено поле для игры. Есть поясняющие дальнейшие действия" />
+    <MESSAGE value="Возможность сделать ход пользователю" />
+    <option name="LAST_COMMIT_MESSAGE" value="Возможность сделать ход пользователю" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Game.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Game.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="field" />

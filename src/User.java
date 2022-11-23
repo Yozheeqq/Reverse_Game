@@ -17,7 +17,6 @@ public class User {
         // Проверка ввода
         int x = Integer.parseInt(coords[0]) - 1;
         int y = Integer.parseInt(coords[1]) - 1;
-        Game.field[x][y] = 'X';
         return new Integer[] {x, y};
     }
 }
