@@ -46,17 +46,18 @@ public class Movement {
         return false;
     }
 
-    public static boolean canMove(String player) {
+    public static List<Integer[]> canMove(String player) {
+        List<Integer[]> possiblePositions = new ArrayList<>();
         for(int i = 0; i < Game.FIELD_SIZE; i++) {
             for(int j = 0; j < Game.FIELD_SIZE; j++) {
                 if(Game.field[i][j] == '0') {
                     if(isCorrectMove(i, j, player)) {
-                        return true;
+                        possiblePositions.add(new Integer[] {i, j});
                     }
                 }
             }
         }
-        return false;
+        return possiblePositions;
     }
 
     public static List<Integer[]> getCorrectDirections(int x, int y) {

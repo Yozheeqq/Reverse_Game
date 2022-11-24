@@ -14,8 +14,6 @@ public class User {
     }
 
     public Integer[] makeMove() {
-        // TODO Вывод все возможных ходов
-        // TODO Визуализация всех возможных ходов
         String[] coords;
         boolean flag;
         int x = 0, y = 0;
