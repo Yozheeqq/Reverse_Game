@@ -6,6 +6,7 @@ public class Game {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_WHITE = "\u001B[37m";
     public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
     private final User user = new User();
     private final Computer computer = new Computer();
     private int computerPoints = 2;
@@ -20,6 +21,10 @@ public class Game {
     public static char[][] field = new char[FIELD_SIZE][FIELD_SIZE];
     private final char[][] prevField = new char[FIELD_SIZE][FIELD_SIZE];
 
+    /**
+     * Показывает меню в консоли.
+     * @return Состояние конца игры. 1 - выход из игры
+     */
     public int showMenu() {
         InteractMenu.showMenu();
         String answer;
@@ -34,7 +39,11 @@ public class Game {
                     InteractMenu.showHowToUseInterface();
                     startGame();
                 }
-                case "2" -> isMenu = false;
+                case "2" -> {
+                    // TODO Реализовать игрок против игрока
+                    isMenu = false;
+                    dualGameStart();
+                }
                 case "3" -> System.out.println("Максимум очков: " + user.getMaxPoints());
                 case "4" -> {
                     InteractMenu.showGoodBye();
@@ -46,11 +55,38 @@ public class Game {
         return 0;
     }
 
+    private void dualGameStart() {
+        initializeStartParams();
+        drawField("Начало");
+        while(true) {
+            userMove("user");
+            if (isDualGameOver()) {
+                break;
+            }
+            cancelMoveSuggestion();
+            copyPrevField();
+            userMove("secondUser");
+            if (isDualGameOver()) {
+                break;
+            }
+            cancelMoveSuggestion();
+            copyPrevField();
+        }
+        drawField("КОНЕЦ");
+        var points = countDualPoints();
+        System.out.println("X: " + points[0] + "; Y: " + points[1]);
+    }
+
+    private boolean isDualGameOver() {
+        var points = countDualPoints();
+        return (points[0] == 0 || points[1] == 0 || (points[0] + points[1] == 64));
+    }
+
     private void startGame() {
         initializeStartParams();
         drawField("Начало");
         while (true) {
-            userMove();
+            userMove("user");
             if (isGameOver()) {
                 break;
             }
@@ -71,17 +107,17 @@ public class Game {
         InteractMenu.showPoint(userPoints, computerPoints);
     }
 
-    private void userMove() {
-        var possiblePositions = Movement.canMove("user");
+    private void userMove(String player) {
+        var possiblePositions = Movement.canMove(player);
         userCanMove = possiblePositions.size() != 0;
         if (!userCanMove) {
             InteractMenu.showUserCantMove();
             return;
         }
-
         drawFieldWithPossibleMoves(possiblePositions);
-        var coordsUser = user.makeMove();
-        GlobalFunctions.changeChipColor('X', coordsUser[0], coordsUser[1], field);
+        var coordsUser = user.makeMove(player);
+        var chip = "user".equals(player) ? 'X' : 'Y';
+        GlobalFunctions.changeChipColor(chip, coordsUser[0], coordsUser[1], field);
         countChips();
         drawField("Игрок");
     }
@@ -174,7 +210,7 @@ public class Game {
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
                 if (field[j][7 - i] == 'Y') {
-                    System.out.print(ANSI_WHITE + "Y " + ANSI_RESET);
+                    System.out.print(ANSI_RED + "Y " + ANSI_RESET);
                 } else if (field[j][7 - i] == 'X') {
                     System.out.print(ANSI_PURPLE + "X " + ANSI_RESET);
                 } else {
@@ -193,11 +229,11 @@ public class Game {
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
                 if (field[j][7 - i] == 'Y') {
-                    System.out.print(ANSI_WHITE + "Y " + ANSI_RESET);
+                    System.out.print(ANSI_RED + "Y " + ANSI_RESET);
                 } else if (field[j][7 - i] == 'X') {
                     System.out.print(ANSI_PURPLE + "X " + ANSI_RESET);
                 } else if (isPossiblePosition(positions, j, 7 - i)) {
-                    System.out.print(ANSI_GREEN + "X " + ANSI_RESET);
+                    System.out.print(ANSI_GREEN + "0 " + ANSI_RESET);
                 } else {
                     System.out.print("0 ");
                 }
@@ -230,5 +266,21 @@ public class Game {
         field[3][4] = 'X';
         field[4][3] = 'X';
         copyPrevField();
+    }
+
+    private Integer[] countDualPoints() {
+        int firstUserPoints = 0;
+        int secondUserPoints = 0;
+        for(var item : field) {
+            for(var cell: item) {
+                if(cell == 'Y') {
+                    secondUserPoints++;
+                } else if (cell == 'X'){
+                    firstUserPoints++;
+                }
+            }
+        }
+        //System.out.println("X: " + firstUserPoints + "; Y: " + secondUserPoints);
+        return new Integer[]{firstUserPoints, secondUserPoints};
     }
 }

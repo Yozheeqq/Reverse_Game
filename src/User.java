@@ -13,7 +13,7 @@ public class User {
         maxPoints = Math.max(maxPoints, value);
     }
 
-    public Integer[] makeMove() {
+    public Integer[] makeMove(String player) {
         String[] coords;
         boolean flag;
         int x = 0, y = 0;
@@ -27,7 +27,7 @@ public class User {
             }
             x = Integer.parseInt(coords[0]) - 1;
             y = Integer.parseInt(coords[1]) - 1;
-            if(!Movement.isCorrectMove(x, y, "user")) {
+            if(!Movement.isCorrectMove(x, y, player)) {
                 flag = false;
                 InteractMenu.showIncorrectPosition();
             }
