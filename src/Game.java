@@ -81,7 +81,7 @@ public class Game {
 
         drawFieldWithPossibleMoves(possiblePositions);
         var coordsUser = user.makeMove();
-        changeChipColor('X', coordsUser[0], coordsUser[1]);
+        GlobalFunctions.changeChipColor('X', coordsUser[0], coordsUser[1], field);
         countChips();
         drawField("Игрок");
     }
@@ -94,18 +94,17 @@ public class Game {
         }
 
         var coordsComputer = computer.makeMove();
-        changeChipColor('Y', coordsComputer[0], coordsComputer[1]);
+        GlobalFunctions.changeChipColor('Y', coordsComputer[0], coordsComputer[1], field);
         countChips();
         drawField("Компьютер");
     }
 
     private void showAllPossiblePositions(List<Integer[]> positions) {
         System.out.println("Возможные ходы: ");
-        System.out.print("{");
         for (var position : positions) {
-            System.out.print("[" + (position[0] + 1) + " " + (position[1] + 1) + "]" + ";");
+            System.out.print("[" + (position[0] + 1) + " " + (position[1] + 1) + "]" + " ");
         }
-        System.out.print("}\n");
+        System.out.print("\n");
     }
 
     private void cancelMoveSuggestion() {
@@ -231,112 +230,5 @@ public class Game {
         field[3][4] = 'X';
         field[4][3] = 'X';
         copyPrevField();
-    }
-
-    public void changeChipColor(char currentChip, int x, int y) {
-        field[x][y] = currentChip;
-        changeChipColorHorizontal(currentChip, x, y);
-        changeChipColorVertical(currentChip, x, y);
-        changeChipColorDiagonal(currentChip, x, y);
-    }
-
-    private void changeChipColorDiagonal(char currentChip, int x, int y) {
-        // TODO Вверх-влево косяк
-        // Вроде работает, я хз честно говоря
-        for (int i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {
-            if (field[i][j] == '0') {
-                break;
-            }
-            if (field[i][j] == currentChip) {
-                for (int k = i, l = j; k < x && l < y; k++, l++) {
-                    field[k][l] = currentChip;
-                }
-                break;
-            }
-        }
-        for (int i = x + 1, j = y + 1; i < FIELD_SIZE && j < FIELD_SIZE; i++, j++) {
-            if (field[i][j] == '0') {
-                break;
-            }
-            if (field[i][j] == currentChip) {
-                for (int k = i, l = j; k >= x && l >= y; k--, l--) {
-                    field[k][l] = currentChip;
-                }
-                break;
-            }
-        }
-        for (int i = x - 1, j = y + 1; i >= 0 && j < FIELD_SIZE; i--, j++) {
-            if (field[i][j] == '0') {
-                break;
-            }
-            if (field[i][j] == currentChip) {
-                for (int k = i, l = j; k < x && l >= y; k++, l--) {
-                    field[k][l] = currentChip;
-                }
-                break;
-            }
-        }
-        for (int i = x + 1, j = y - 1; i < FIELD_SIZE && j >= 0; i++, j--) {
-            if (field[i][j] == '0') {
-                break;
-            }
-            if (field[i][j] == currentChip) {
-                for (int k = i, l = j; k >= x && l < y; k--, l++) {
-                    field[k][l] = currentChip;
-                }
-                break;
-            }
-        }
-    }
-
-    private void changeChipColorHorizontal(char currentChip, int x, int y) {
-        for (int i = x - 1; i >= 0; i--) {
-            if (field[i][y] == '0') {
-                break;
-            }
-            if (field[i][y] == currentChip) {
-                for (int j = i; j < x; j++) {
-                    field[j][y] = currentChip;
-                }
-                break;
-            }
-        }
-        for (int i = x + 1; i < Game.FIELD_SIZE; i++) {
-            if (field[i][y] == '0') {
-                break;
-            }
-            if (field[i][y] == currentChip) {
-                for (int j = x; j <= i; j++) {
-                    field[j][y] = currentChip;
-                }
-                break;
-            }
-        }
-    }
-
-    private void changeChipColorVertical(char currentChip, int x, int y) {
-
-        for (int i = y - 1; i >= 0; i--) {
-            if (field[x][i] == '0') {
-                break;
-            }
-            if (field[x][i] == currentChip) {
-                for (int j = i; j < y; j++) {
-                    field[x][j] = currentChip;
-                }
-                break;
-            }
-        }
-        for (int i = y + 1; i < Game.FIELD_SIZE; i++) {
-            if (field[x][i] == '0') {
-                break;
-            }
-            if (field[x][i] == currentChip) {
-                for (int j = y; j <= i; j++) {
-                    field[x][j] = currentChip;
-                }
-                break;
-            }
-        }
     }
 }
