@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Добавлен сложный уровень. Разбитие по классам">
+    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Добавлена функционал для игры вдвоем">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ComputerFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ComputerFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GlobalFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GlobalFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InteractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InteractMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Movement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Movement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +68,9 @@
       <workItem from="1669284929301" duration="2568000" />
       <workItem from="1669291097881" duration="2253000" />
       <workItem from="1669317808151" duration="434000" />
-      <workItem from="1669376285638" duration="5379000" />
+      <workItem from="1669376285638" duration="5510000" />
+      <workItem from="1669641583031" duration="35000" />
+      <workItem from="1669719184755" duration="3071000" />
     </task>
     <task id="LOCAL-00001" summary="Меню">
       <created>1669128463010</created>
@@ -127,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669379673336</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Добавлена функционал для игры вдвоем">
+      <created>1669381872821</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669381872821</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +168,7 @@
     <MESSAGE value="Полностью готовая игра против компютера на легком уровне. Если отмена хода и меню. Реализован повтор решения" />
     <MESSAGE value="Добавлена визуализация потенциальных ходов игрока" />
     <MESSAGE value="Добавлен сложный уровень. Разбитие по классам" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлен сложный уровень. Разбитие по классам" />
+    <MESSAGE value="Добавлена функционал для игры вдвоем" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлена функционал для игры вдвоем" />
   </component>
 </project>

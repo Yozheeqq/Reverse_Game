@@ -1,12 +1,16 @@
 import java.util.List;
 
+/**
+ * Класс для взаимодействия с игрой
+ */
 public class Game {
+    // Цвета консоли
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_PURPLE = "\u001B[35m";
+    private static final String ANSI_WHITE = "\u001B[37m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_RED = "\u001B[31m";
     public final static int FIELD_SIZE = 8;
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RED = "\u001B[31m";
     private final User user = new User();
     private final Computer computer = new Computer();
     private int computerPoints = 2;
@@ -40,7 +44,6 @@ public class Game {
                     startGame();
                 }
                 case "2" -> {
-                    // TODO Реализовать игрок против игрока
                     isMenu = false;
                     dualGameStart();
                 }
@@ -55,6 +58,9 @@ public class Game {
         return 0;
     }
 
+    /**
+     * Начало игры вдвоем
+     */
     private void dualGameStart() {
         initializeStartParams();
         drawField("Начало");
@@ -77,11 +83,18 @@ public class Game {
         System.out.println("X: " + points[0] + "; Y: " + points[1]);
     }
 
+    /**
+     * Проверка, что игра вдвоем не закончилась
+     * @return true - не закончилась, false - закончилась
+     */
     private boolean isDualGameOver() {
         var points = countDualPoints();
         return (points[0] == 0 || points[1] == 0 || (points[0] + points[1] == 64));
     }
 
+    /**
+     * Начало игры с компьютером
+     */
     private void startGame() {
         initializeStartParams();
         drawField("Начало");
@@ -107,6 +120,10 @@ public class Game {
         InteractMenu.showPoint(userPoints, computerPoints);
     }
 
+    /**
+     * Метод хода игрока
+     * @param player user - первый игрок (дуэль и с компьютером), secondUser - второй игрок в дуэли
+     */
     private void userMove(String player) {
         var possiblePositions = Movement.canMove(player);
         userCanMove = possiblePositions.size() != 0;
@@ -122,6 +139,9 @@ public class Game {
         drawField("Игрок");
     }
 
+    /**
+     * Метод хода компьютера
+     */
     private void computerMove() {
         computerCanMove = Movement.canMove("computer").size() != 0;
         if (!computerCanMove) {
@@ -135,6 +155,10 @@ public class Game {
         drawField("Компьютер");
     }
 
+    /**
+     * Вывод всех возможных ходов для игрока в консоль
+     * @param positions Список с потенциальными позициями
+     */
     private void showAllPossiblePositions(List<Integer[]> positions) {
         System.out.println("Возможные ходы: ");
         for (var position : positions) {
@@ -143,6 +167,9 @@ public class Game {
         System.out.print("\n");
     }
 
+    /**
+     * Предложение игроку отменить ход
+     */
     private void cancelMoveSuggestion() {
         InteractMenu.cancelMove();
         String answer = InteractMenu.SCANNER.nextLine();
@@ -152,6 +179,10 @@ public class Game {
 
     }
 
+    /**
+     * Провека, что игра с компьютером окончена
+     * @return true - закончена, false - не закончена
+     */
     private boolean isGameOver() {
         if (userPoints == 0) {
             winner = "computer";
@@ -172,12 +203,18 @@ public class Game {
         return false;
     }
 
+    /**
+     * Копируем предыдущее поле
+     */
     private void copyPrevField() {
         for (int i = 0; i < FIELD_SIZE; i++) {
             System.arraycopy(field[i], 0, prevField[i], 0, FIELD_SIZE);
         }
     }
 
+    /**
+     * Подсчет текущего количества очков для двух игроков
+     */
     private void countChips() {
         userPoints = 0;
         computerPoints = 0;
@@ -195,6 +232,9 @@ public class Game {
         }
     }
 
+    /**
+     * Отмена хода игрока
+     */
     private void cancelMove() {
         for (int i = 0; i < FIELD_SIZE; i++) {
             System.arraycopy(prevField[i], 0, field[i], 0, FIELD_SIZE);
@@ -202,6 +242,10 @@ public class Game {
         drawField("Игрок");
     }
 
+    /**
+     * Отрисовка текущего поля
+     * @param player user - ход игрока, computer - ход компьютера
+     */
     private void drawField(String player) {
         System.out.println("---------------");
         System.out.println("Сейчас ход " + player);
@@ -222,6 +266,10 @@ public class Game {
         System.out.println("---------------");
     }
 
+    /**
+     * Отрисовка поля с потенциальными позициями
+     * @param positions потенциальные позиции
+     */
     private void drawFieldWithPossibleMoves(List<Integer[]> positions) {
         System.out.println("---------------");
         showAllPossiblePositions(positions);
@@ -243,6 +291,13 @@ public class Game {
         System.out.println("---------------");
     }
 
+    /**
+     * Провека, что текущая координата в списке потенциальных позиций
+     * @param positions список всех потенциальных позиций
+     * @param x координата по горизонтали
+     * @param y координата по вертикали
+     * @return true - координата в списке потенциальных, false - координата не в списке потенциальных
+     */
     private boolean isPossiblePosition(List<Integer[]> positions, int x, int y) {
         for (var position : positions) {
             if (position[0] == x && position[1] == y) {
@@ -252,6 +307,9 @@ public class Game {
         return false;
     }
 
+    /**
+     * Инициализация первоначальных параметров
+     */
     private void initializeStartParams() {
         computerPoints = 2;
         userPoints = 2;
@@ -268,6 +326,10 @@ public class Game {
         copyPrevField();
     }
 
+    /**
+     * Подсчет очков для дуэли
+     * @return список с парой очков
+     */
     private Integer[] countDualPoints() {
         int firstUserPoints = 0;
         int secondUserPoints = 0;

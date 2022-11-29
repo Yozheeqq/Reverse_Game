@@ -1,4 +1,15 @@
+/**
+ * Класс для функционала игры
+ */
 public class GlobalFunctions {
+
+    /**
+     * Меняем цвет фишек после хода
+     * @param currentChip X - фишка игрока, Y - фишка компьютера
+     * @param x координата по горизонтали текущей фишки
+     * @param y координата по вертикали текущей фишки
+     * @param field текущее игровое поле
+     */
     public static void changeChipColor(char currentChip, int x, int y, char[][] field) {
         field[x][y] = currentChip;
         changeChipColorHorizontal(currentChip, x, y, field);
@@ -6,6 +17,13 @@ public class GlobalFunctions {
         changeChipColorDiagonal(currentChip, x, y, field);
     }
 
+    /**
+     * Меняем цвет фишек после хода  по диагонали
+     * @param currentChip X - фишка игрока, Y - фишка компьютера
+     * @param x координата по горизонтали текущей фишки
+     * @param y координата по вертикали текущей фишки
+     * @param field текущее игровое поле
+     */
     private static void changeChipColorDiagonal(char currentChip, int x, int y, char[][] field) {
         for (int i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {
             if (field[i][j] == '0') {
@@ -53,6 +71,13 @@ public class GlobalFunctions {
         }
     }
 
+    /**
+     * Меняем цвет фишек после хода  по горизонтали
+     * @param currentChip X - фишка игрока, Y - фишка компьютера
+     * @param x координата по горизонтали текущей фишки
+     * @param y координата по вертикали текущей фишки
+     * @param field текущее игровое поле
+     */
     private static void changeChipColorHorizontal(char currentChip, int x, int y, char[][] field) {
         for (int i = x - 1; i >= 0; i--) {
             if (field[i][y] == '0') {
@@ -78,6 +103,13 @@ public class GlobalFunctions {
         }
     }
 
+    /**
+     * Меняем цвет фишек после хода  по вертикали
+     * @param currentChip X - фишка игрока, Y - фишка компьютера
+     * @param x координата по горизонтали текущей фишки
+     * @param y координата по вертикали текущей фишки
+     * @param field текущее игровое поле
+     */
     private static void changeChipColorVertical(char currentChip, int x, int y, char[][] field) {
         for (int i = y - 1; i >= 0; i--) {
             if (field[x][i] == '0') {

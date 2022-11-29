@@ -1,11 +1,24 @@
-
+/**
+ * Класс игрока
+ */
 public class User {
+    /**
+     * Максмальное кол-во очков игрока за текущую сессию
+     */
     private int maxPoints;
 
+    /**
+     * Получить максмальное число очков
+     * @return максмальное число очков
+     */
     public int getMaxPoints() {
         return maxPoints;
     }
 
+    /**
+     * Установить максимальное число очков
+     * @param value кол-во очков
+     */
     public void setMaxPoints(int value) {
         if(value < 0 || value > 64) {
             System.out.println("Кол-во очков должно быть неотрицательным числом и меньше 65");
@@ -13,6 +26,11 @@ public class User {
         maxPoints = Math.max(maxPoints, value);
     }
 
+    /**
+     * Метод для хода игрока
+     * @param player user - первый игрок, secondUser - второй игрок в дуэли
+     * @return координаты хода
+     */
     public Integer[] makeMove(String player) {
         String[] coords;
         boolean flag;
@@ -35,6 +53,12 @@ public class User {
 
         return new Integer[] {x, y};
     }
+
+    /**
+     * Проверка, что введенные координаты корректны
+     * @param input распарсенная строка ввода
+     * @return true - ход некорректный, false - ход корректный
+     */
     private boolean isCorrectInputFormat(final String[] input) {
         boolean isCorrect = true;
         if(input.length != 2) {

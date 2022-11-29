@@ -1,8 +1,17 @@
 import java.util.Scanner;
 
+/**
+ * Класс для вывода сообщений в консоль
+ */
 public class InteractMenu {
+    /**
+     * Сканнер для считывания с консоли
+     */
     public static final Scanner SCANNER = new Scanner(System.in);
 
+    /**
+     * Запрещаем создавать инстанс класс
+     */
     private InteractMenu() {}
 
     public static void showMenu() {
