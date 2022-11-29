@@ -1,5 +1,5 @@
 
-public class Computer {
+public final class Computer {
     // 1 - новичок
     // 2 - профессионал
     private int level;

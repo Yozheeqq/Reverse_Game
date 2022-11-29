@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Класс для хода компьютера
  */
-public class ComputerFunctions {
+public final class ComputerFunctions {
     /**
      * Запрещаем создавать инстанс класс
      */

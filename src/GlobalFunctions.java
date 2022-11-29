@@ -1,7 +1,7 @@
 /**
  * Класс для функционала игры
  */
-public class GlobalFunctions {
+public final class GlobalFunctions {
 
     /**
      * Меняем цвет фишек после хода

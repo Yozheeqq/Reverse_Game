@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Класс для возможности делать ход
  */
-public class Movement {
+public final class Movement {
     /**
      * Запрещаем создавать инстанс класс
      */

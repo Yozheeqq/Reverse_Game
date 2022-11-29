@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Класс для вывода сообщений в консоль
  */
-public class InteractMenu {
+public final class InteractMenu {
     /**
      * Сканнер для считывания с консоли
      */

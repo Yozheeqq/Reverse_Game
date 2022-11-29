@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * Класс для взаимодействия с игрой
  */
-public class Game {
+public final class Game {
     // Цвета консоли
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_PURPLE = "\u001B[35m";
