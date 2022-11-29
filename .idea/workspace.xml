@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Добавлена функционал для игры вдвоем">
+    <list default="true" id="7b1bd632-baaa-4aac-a58c-0dfb88a61113" name="Changes" comment="Добавлены final">
+      <change afterPath="$PROJECT_DIR$/pictures/cancel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pictures/coords.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pictures/level.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pictures/mainMenu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pictures/points.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pictures/possibleMoves.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ComputerFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ComputerFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GlobalFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GlobalFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InteractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InteractMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Movement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Movement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,24 +32,27 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2HuFkdvjS9BClJZNCvNc3F9xUyj" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -70,7 +71,7 @@
       <workItem from="1669317808151" duration="434000" />
       <workItem from="1669376285638" duration="5510000" />
       <workItem from="1669641583031" duration="35000" />
-      <workItem from="1669719184755" duration="3071000" />
+      <workItem from="1669719184755" duration="4306000" />
     </task>
     <task id="LOCAL-00001" summary="Меню">
       <created>1669128463010</created>
@@ -142,7 +143,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669381872821</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Добавлены комментарии к методам и классам">
+      <created>1669722299221</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669722299221</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Добавлены final">
+      <created>1669722471103</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669722471103</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +175,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Меню" />
     <MESSAGE value="Добавлены 3 класса, изменен класс Game. &#10;Два &quot;пользователя&quot; - это комп и игрок" />
     <MESSAGE value="Интерактив с пользователем. Добавлено поле для игры. Есть поясняющие дальнейшие действия" />
@@ -169,6 +185,8 @@
     <MESSAGE value="Добавлена визуализация потенциальных ходов игрока" />
     <MESSAGE value="Добавлен сложный уровень. Разбитие по классам" />
     <MESSAGE value="Добавлена функционал для игры вдвоем" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлена функционал для игры вдвоем" />
+    <MESSAGE value="Добавлены комментарии к методам и классам" />
+    <MESSAGE value="Добавлены final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены final" />
   </component>
 </project>
